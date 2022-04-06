@@ -14,9 +14,8 @@
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.listviewarrayadapter.MainActivity"/>
+                android:value="com.example.listviewarrayadapter.MainActivity" />
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

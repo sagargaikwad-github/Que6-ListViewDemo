@@ -2,6 +2,8 @@ package com.example.listviewarrayadapter;
 
 import android.provider.ContactsContract;
 
+import java.util.ArrayList;
+
 public class FruitData {
     int image;
     String name;
@@ -9,12 +11,12 @@ public class FruitData {
     String desc;
     String email;
 
-    public FruitData(int image, String name, String short_desc, String desc,String email) {
+    public FruitData(int image, String name, String short_desc, String desc, String email) {
         this.image = image;
         this.name = name;
         this.desc = desc;
         this.short_desc = short_desc;
-        this.email=email;
+        this.email = email;
 
 
     }
@@ -58,4 +60,5 @@ public class FruitData {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

@@ -16,30 +16,30 @@ import java.util.ArrayList;
 
 public class DataAdapter extends ArrayAdapter<FruitData> {
     public DataAdapter(@NonNull Context context, ArrayList<FruitData> arrayList) {
-        super(context,0, arrayList);
+        super(context, 0, arrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-           // convertView=LayoutInflater.from(getContext()).inflate(R.layout.list_display,parent,false);
+        // convertView=LayoutInflater.from(getContext()).inflate(R.layout.list_display,parent,false);
 
-            FruitData fruitData=getItem(position);
+        FruitData fruitData = getItem(position);
 
-            if(convertView==null)
-            {
-                convertView=LayoutInflater.from(getContext()).inflate(R.layout.list_display,parent,false);
-            }
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_display, parent, false);
+        }
+        //Aapan vegli ji activiity banavli, individual one list sathi tyache views la ithe apan data set karto
 
-            ImageView imageView=convertView.findViewById(R.id.imageView);
-            imageView.setImageResource(fruitData.getImage());
+        ImageView imageView = convertView.findViewById(R.id.imageView);
+        imageView.setImageResource(fruitData.getImage());
 
-            TextView textView=convertView.findViewById(R.id.textView2);
-            textView.setText(fruitData.getName());
+        TextView textView = convertView.findViewById(R.id.textView2);
+        textView.setText(fruitData.getName());
 
-            TextView textView1=convertView.findViewById(R.id.textView3);
-            textView1.setText(fruitData.getShort_desc());
+        TextView textView1 = convertView.findViewById(R.id.textView3);
+        textView1.setText(fruitData.getShort_desc());
 
 
         return convertView;
