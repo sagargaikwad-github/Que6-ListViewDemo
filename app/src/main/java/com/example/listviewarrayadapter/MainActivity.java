@@ -36,9 +36,9 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
    // ListView lv;
     TextView nodata;
-     ArrayList<FruitData> arrayList;
+    ArrayList<FruitData> arrayList;
     String ab;
-
+  MyAdapterRecyclerView myAdapterRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         // lv = findViewById(R.id.listview);
         nodata = findViewById(R.id.nodata);
 
-        ArrayList<FruitData> arrayList = new ArrayList<>();
 
+        ArrayList<FruitData> arrayList = new ArrayList<>();
 
         arrayList.add(new FruitData(R.drawable.apple, "Apple", "An apple a day keeps the doctor away",
                 "        An apple is an edible fruit produced by an apple tree (Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today. Apples have been grown for thousands of years in Asia and Europe and were brought to North America by European colonists. Apples have religious and mythological significance in many cultures, including Norse, Greek, and European Christian tradition.\n" +
@@ -68,21 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "    Pineapples grow as a small shrub; the individual flowers of the unpollinated plant fuse to form a multiple fruit. The plant is normally propagated from the offset produced at the top of the fruit, or from a side shoot, and typically mature within a year.", "https://en.wikipedia.org/wiki/Pineapple"));
 
-        savedata(arrayList,"");
-//        if(arrayList.isEmpty())
-//        {
+
+//        if (arrayList.isEmpty()) {
 //            getdata();
 //        }
-//        if(getdata()==null)
-//        {
-//            savedata(arrayList,"");
-//        }
-
-
-
-
-
-
+        if (getdata() == null) {
+            savedata(arrayList, "");
+        }
 
 
 //        SharedPreferences sharedPreferences=getSharedPreferences("Data",MODE_PRIVATE);
@@ -116,20 +108,18 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-            RecyclerView recyclerView = findViewById(R.id.rec_view);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            // recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        RecyclerView recyclerView = findViewById(R.id.rec_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        // recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
             ArrayList<FruitData> a1 = new ArrayList<>();
             a1 = getdata();
 
+        MyAdapterRecyclerView myAdapterRecyclerView = new MyAdapterRecyclerView(a1, MainActivity.this);
+        recyclerView.setAdapter(myAdapterRecyclerView);
 
-
-            MyAdapterRecyclerView myAdapterRecyclerView = new MyAdapterRecyclerView(a1, MainActivity.this);
-            recyclerView.setAdapter(myAdapterRecyclerView);
-
-            recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
-        }
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+    }
 
 
 
@@ -151,6 +141,12 @@ public class MainActivity extends AppCompatActivity {
         Type type = new TypeToken<ArrayList<FruitData>>() {}.getType();
         arrayList=gson.fromJson(json, type);
         return arrayList;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
 }

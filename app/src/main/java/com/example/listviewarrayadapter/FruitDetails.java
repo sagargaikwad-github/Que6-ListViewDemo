@@ -46,7 +46,6 @@ public class FruitDetails extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(fruit_link));
                 startActivity(intent);
-
             }
         });
 
