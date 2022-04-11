@@ -1,7 +1,12 @@
 package com.example.listviewarrayadapter;
 
+
+
+
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,8 +32,9 @@ public class FruitDetails2 extends AppCompatActivity {
     ImageView img;
     TextView name,desc;
     Button save;
-  MyAdapterRecyclerView myAdapterRecyclerView ;
     ArrayList<FruitData> arrayList ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +49,6 @@ public class FruitDetails2 extends AppCompatActivity {
         save = findViewById(R.id.save);
 
 
-
-
         Bundle bundle = getIntent().getExtras();
         int a = bundle.getInt("Image");
         String b = bundle.getString("Name", "");
@@ -55,8 +59,6 @@ public class FruitDetails2 extends AppCompatActivity {
         getdata();
         arrayList=getdata();
 
-
-
         img.setImageResource(a);
         name.setText(b);
         desc.setText(c);
@@ -65,21 +67,22 @@ public class FruitDetails2 extends AppCompatActivity {
         //Toast.makeText(this, d, Toast.LENGTH_SHORT).show();
         int d = bundle.getInt("Position");
 
+
         save.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View view) {
                 String x=name.getText().toString();
                 String y=desc.getText().toString();
                 arrayList.set(d,new FruitData(a,x,"SHORT",y,"EMAIL"));
+
                 savedata(arrayList,"");
+
                 Toast.makeText(FruitDetails2.this, "Data Added", Toast.LENGTH_SHORT).show();
 
 
             }
         });
     }
-
 
     private void savedata(ArrayList<FruitData> list,String key) {
         SharedPreferences sharedPreferences=getSharedPreferences("Save", MODE_PRIVATE);
@@ -107,6 +110,8 @@ public class FruitDetails2 extends AppCompatActivity {
         startActivity(intent);
         super.onRestart();
     }
+
+
 }
 
 

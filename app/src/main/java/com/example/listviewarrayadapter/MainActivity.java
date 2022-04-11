@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,11 +35,17 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-   // ListView lv;
+
+    // ListView lv;
     TextView nodata;
     ArrayList<FruitData> arrayList;
     String ab;
-  MyAdapterRecyclerView myAdapterRecyclerView;
+ RecyclerView recyclerView;
+  public static MyAdapterRecyclerView myAdapterRecyclerView;
+    ArrayList<FruitData> a1 = new ArrayList<>();
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // lv = findViewById(R.id.listview);
         nodata = findViewById(R.id.nodata);
-
 
         ArrayList<FruitData> arrayList = new ArrayList<>();
 
@@ -68,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
                 "\n" +
                 "    Pineapples grow as a small shrub; the individual flowers of the unpollinated plant fuse to form a multiple fruit. The plant is normally propagated from the offset produced at the top of the fruit, or from a side shoot, and typically mature within a year.", "https://en.wikipedia.org/wiki/Pineapple"));
 
-
 //        if (arrayList.isEmpty()) {
 //            getdata();
 //        }
+
+
+
         if (getdata() == null) {
             savedata(arrayList, "");
         }
@@ -107,24 +115,23 @@ public class MainActivity extends AppCompatActivity {
 //
 //            }
 //        });
+        recyclerView = findViewById(R.id.rec_view);
 
-        RecyclerView recyclerView = findViewById(R.id.rec_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
-            ArrayList<FruitData> a1 = new ArrayList<>();
             a1 = getdata();
 
-        MyAdapterRecyclerView myAdapterRecyclerView = new MyAdapterRecyclerView(a1, MainActivity.this);
-        recyclerView.setAdapter(myAdapterRecyclerView);
 
+        myAdapterRecyclerView = new MyAdapterRecyclerView(a1, MainActivity.this);
+        recyclerView.setAdapter(myAdapterRecyclerView);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+
     }
 
 
 
-
-    private void savedata(ArrayList<FruitData> list,String key) {
+    private void savedata(ArrayList<FruitData> list, String key) {
         SharedPreferences sharedPreferences=getSharedPreferences("Save", MODE_PRIVATE);
         SharedPreferences.Editor editor=sharedPreferences.edit();
         Gson gson=new Gson();

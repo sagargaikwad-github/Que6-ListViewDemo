@@ -16,6 +16,7 @@ public class FruitDetails extends AppCompatActivity {
     TextView name, description, link;
     ImageView image;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,6 @@ public class FruitDetails extends AppCompatActivity {
         description = findViewById(R.id.description);
         image = findViewById(R.id.image);
         link = findViewById(R.id.link);
-
 
         Bundle bundle = getIntent().getExtras();
         String fruit_name = bundle.getString("Name", "");

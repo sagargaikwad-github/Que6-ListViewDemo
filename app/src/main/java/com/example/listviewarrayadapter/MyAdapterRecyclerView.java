@@ -21,7 +21,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecyclerView.holder> {
+public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecyclerView.holder>{
   ArrayList<FruitData> arrayList;
   Context context;
   BottomSheetDialog sheetDialog;
@@ -45,6 +45,7 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
         holder.r_img.setImageResource(arrayList.get(position).getImage());
         holder.r_name.setText(arrayList.get(position).getName());
 
+
 //        FruitData obj=arrayList.get(position);
 //        String text=obj.getName();
 //        int img=obj.getImage();
@@ -65,20 +66,24 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
 //                 showBottomDialog();
 
                 sheetDialog=new BottomSheetDialog(context,R.style.BottomSheetTheme);
-                LinearLayout sheetLayout=sheetDialog.findViewById(R.id.Lay);
+                LinearLayout sheetLayout=sheetDialog.findViewById(R.id.bottom);
 
 //            LinearLayout update=sheetDialog.findViewById(R.id.update);
 //            LinearLayout delete=sheetDialog.findViewById(R.id.delete);
 
-                 view=LayoutInflater.from(context).inflate(R.layout.activity_bottom_sheet_dialog,
+
+//                [] view=LayoutInflater.from(context).inflate(R.layout.activity_bottom_sheet_dialog,
+//                        sheetLayout);
+
+                view=LayoutInflater.from(context).inflate(R.layout.bottom_sheet,
                         sheetLayout);
 
                 sheetDialog.setContentView(view);
                 sheetDialog.show();
 
-                final LinearLayout update=view.findViewById(R.id.update);
-                final LinearLayout delete=view.findViewById(R.id.delete);
-                final LinearLayout viewbutton=view.findViewById(R.id.viewbutton);
+                final LinearLayout update=view.findViewById(R.id.update1);
+                final LinearLayout delete=view.findViewById(R.id.delete1);
+                final LinearLayout viewbutton=view.findViewById(R.id.view1);
 
 
                viewbutton.setOnClickListener(new View.OnClickListener() {
@@ -107,8 +112,14 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
                 sheetDialog.dismiss();
+
+
+                ((MainActivity)context).finish();
+
+
                     }
                 });
+
 
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -120,10 +131,8 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
                         sheetDialog.dismiss();
                     }
                 });
-
-
-
             }
+
         });
 
     }
@@ -156,6 +165,8 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
     }
 
 
+
+
     class holder extends RecyclerView.ViewHolder {
         TextView r_name;
         ImageView r_img;
@@ -174,6 +185,7 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
         editor.putString("Task",json);
         editor.apply();
     }
+
 
 
 }
