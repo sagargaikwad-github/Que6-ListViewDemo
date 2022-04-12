@@ -5,13 +5,17 @@ import android.provider.ContactsContract;
 import java.util.ArrayList;
 
 public class FruitData {
+    int id;
     int image;
     String name;
     String short_desc;
     String desc;
     String email;
 
-    public FruitData(int image, String name, String short_desc, String desc, String email) {
+
+
+    public FruitData(int id, int image, String name, String short_desc, String desc, String email) {
+        this.id = id;
         this.image = image;
         this.name = name;
         this.desc = desc;
@@ -19,6 +23,14 @@ public class FruitData {
         this.email = email;
 
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getShort_desc() {

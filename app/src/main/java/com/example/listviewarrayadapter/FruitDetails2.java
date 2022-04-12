@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +37,14 @@ public class FruitDetails2 extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fruit_details2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
 
         img = findViewById(R.id.image2);
@@ -73,7 +77,7 @@ public class FruitDetails2 extends AppCompatActivity {
             public void onClick(View view) {
                 String x=name.getText().toString();
                 String y=desc.getText().toString();
-                arrayList.set(d,new FruitData(a,x,"SHORT",y,"EMAIL"));
+                arrayList.set(d,new FruitData(0,a,x,"SHORT",y,"EMAIL"));
 
                 savedata(arrayList,"");
 
