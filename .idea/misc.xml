@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/drawable/bgsheet.xml" value="0.208" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/drawable/sheetbg.xml" value="0.208" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/font/.xml" value="0.284375" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/activity_bottom_sheet_dialog.xml" value="0.1" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/activity_fruit_details.xml" value="0.22826086956521738" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/activity_fruit_details2.xml" value="0.2" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/activity_recycler_view_display.xml" value="0.22826086956521738" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/bottom_sheet.xml" value="0.22826086956521738" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/list_display.xml" value="0.22826086956521738" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/no_data.xml" value="0.22826086956521738" />
+        <entry key="..\:/ListViewArrayadapter/app/src/main/res/layout/recycler_row.xml" value="0.22826086956521738" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
