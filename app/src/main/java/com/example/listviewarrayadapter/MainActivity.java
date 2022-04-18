@@ -15,11 +15,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -44,13 +46,10 @@ public class MainActivity extends AppCompatActivity {
     TextView nodata;
     ArrayList<FruitData> arrayList;
     String ab;
- RecyclerView recyclerView;
-MyAdapterRecyclerView myAdapterRecyclerView;
+   RecyclerView recyclerView;
+  MyAdapterRecyclerView myAdapterRecyclerView;
     ArrayList<FruitData> a1 = new ArrayList<>();
     SearchView searchView;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +58,7 @@ MyAdapterRecyclerView myAdapterRecyclerView;
         // lv = findViewById(R.id.listview);
         nodata = findViewById(R.id.nodata);
         searchView=findViewById(R.id.search);
+
 
 
         ArrayList<FruitData> arrayList = new ArrayList<>();
@@ -121,8 +121,9 @@ MyAdapterRecyclerView myAdapterRecyclerView;
 //
 //            }
 //        });
-        recyclerView = findViewById(R.id.rec_view);
 
+
+        recyclerView = findViewById(R.id.rec_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         // recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
@@ -143,12 +144,26 @@ MyAdapterRecyclerView myAdapterRecyclerView;
                filter(s);
                return false;
            }
+
        });
+
+//       searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+//           @Override
+//           public boolean onClose() {
+//               searchView.clearFocus();
+//               return false;
+//           }
+//       });
+
+
     }
 
     private void filter(String s) {
         ArrayList<FruitData> filteredlist = new ArrayList<>();
-        for (FruitData item : arrayList) {
+        for (FruitData item : getdata())
+        //we changed here arraylist to getdata() beacuse when we clear a searchview it gets a data from a arraylist
+            //   we need to get data from deleted list so getdata is a sharedpreference that is updated new data.
+        {
             if (item.getName().toLowerCase().contains(s.toLowerCase())) {
                 filteredlist.add(item);
             }
@@ -163,7 +178,9 @@ MyAdapterRecyclerView myAdapterRecyclerView;
             myAdapterRecyclerView.filterList(filteredlist);
             nodata.setVisibility(View.GONE);
             myAdapterRecyclerView.notifyDataSetChanged();
+
         }
+
     }
 
 

@@ -3,6 +3,7 @@ package com.example.listviewarrayadapter;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,6 +73,7 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
 //                context.startActivity(intent);
 //                 showBottomDialog();
 
+
                 sheetDialog=new BottomSheetDialog(context,R.style.BottomSheetTheme);
                 LinearLayout sheetLayout=sheetDialog.findViewById(R.id.bottom);
 
@@ -103,6 +106,7 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                        context.startActivity(intent);
                        sheetDialog.dismiss();
+
                    }
                });
 
@@ -120,7 +124,8 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
                 context.startActivity(intent);
                 sheetDialog.dismiss();
                 
-                ((MainActivity)context).finish();
+                ((MainActivity)context).finish();  //For finishing mainactivity in background
+
                     }
                 });
 
@@ -134,6 +139,9 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
 //                        savedata(arrayList,"");
 //                        sheetDialog.dismiss();
 
+                        // here first we take an arraylist and get a sharedpreference data in that after that we remove a
+                        // data from the new arraylist and that arraylist save to the sharedpreferences.
+
                         a2=getdata();
                        for(int i=0;i<a2.size();i++)
                        {
@@ -141,13 +149,16 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
                            {
                               a2.remove(i);
                            }
+                           savedata(a2,"");
+                           notifyDataSetChanged();
+
                        }
 //                        a2.remove(a);
 //                        Toast.makeText(context, String.valueOf(a), Toast.LENGTH_SHORT).show();
 
-                        savedata(a2,"");
-                        notifyDataSetChanged();
                         sheetDialog.dismiss();
+
+
 
                     }
 
@@ -162,11 +173,6 @@ public class MyAdapterRecyclerView extends RecyclerView.Adapter<MyAdapterRecycle
 //                        savedata(a2,"");
 //
 //                    }
-
-
-
-
-
 
                 });
             }
